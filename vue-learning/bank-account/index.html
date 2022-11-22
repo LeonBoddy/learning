@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    >
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="ie=edge"
+    >
+    <title>Bank Account</title>
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+    <style>
+        body {
+            background-color: grey;
+            display: grid;
+            justify-content: center;
+        }
+        #app {
+            max-width: 1080px;
+            width: 100%;
+            border-radius: 15px;
+            background-color: white;
+            padding: 5%;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>Bank Account App</h1>
+    <h2>Current balance: {{ balance }}</h2>
+    <h2>User Input: {{ userInput }}</h2>
+    <input type="text" v-model="userInput" placeholder="Enter Amount Here">
+    <div class="buttons">
+        <button id="deposit" v-on:click="deposit()">Deposit Amount</button>
+        <button id="withdraw" v-on:click="withdraw()">Withdraw Amount</button>
+    </div>
+    
+</div>
+<script>
+    let app = {
+        data() {
+            return {
+                balance: 0,
+                userInput: '',
+            }
+        },
+        methods: {
+            deposit() {
+                let inputNumber = parseInt(this.userInput);
+                if (inputNumber && typeof inputNumber === 'number') {
+                    this.balance += inputNumber;
+                }
+                else {
+                    alert("Please enter an Number")
+                }
+            },
+            withdraw() {
+                let inputNumber = parseInt(this.userInput);
+                if (inputNumber && typeof inputNumber === 'number') {
+                    this.balance -= inputNumber;
+                }
+                else {
+                    alert("Please enter an Number")
+                }
+            },
+        }
+    }
+    Vue.createApp(app).mount('#app')
+</script>
+</body>
+</html>
