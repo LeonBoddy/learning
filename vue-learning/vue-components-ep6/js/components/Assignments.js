@@ -1,6 +1,6 @@
 import AssignmentsList from './AssignmentsList.js';
 export default {
-    component: { AssignmentsList },
+    components: { AssignmentsList },
     template: `
     <AssignmentsList :assigments="inProgressAssignments" title="In Progress Assignments"></AssignmentsList>
     `,
